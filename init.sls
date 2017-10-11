@@ -1,7 +1,7 @@
 {% if grains['os'] == 'Gentoo' %}
 
 include:
-  - state.vmware-workstation.deps
+  - vmware-workstation.deps
 
 layman_vmware:
   layman.present:
