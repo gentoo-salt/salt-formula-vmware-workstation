@@ -7,21 +7,19 @@ layman_vmware:
   layman.present:
     - name: vmware
 
-{% for keyword in 'app-emulation/vmware-workstation','app-emulation/vmware-modules','app-emulation/vmware-tools' %}
-{{ keyword }}:
+{% for pkg in 'app-emulation/vmware-workstation','app-emulation/vmware-modules','app-emulation/vmware-tools' %}
+keyword-{{ pkg }}:
   file.replace:
     - name: /etc/portage/package.unmask/all
-    - pattern: .*{{ keyword }}.*
-    - repl: {{ keyword }}::vmware
+    - pattern: .*{{ pkg }}.*
+    - repl: {{ pkg }}::vmware
     - append_if_not_found: True
-{% endfor %}
 
-vmware-pkgs:
+package-{{ pkg }}:
   pkg.installed:
-    - names:
-      - app-emulation/vmware-modules
-      - app-emulation/vmware-tools
-      - app-emulation/vmware-workstation
+    - pkgs:
+      - {{ pkg }}
+{% endfor %}
 
 configure:
   cmd.run:
@@ -33,6 +31,6 @@ vmware_service:
     - running
     - enable: True
     - require:
-      - pkg: vmware-pkgs
+      - pkg: package-app-emulation/vmware-workstation
 
 {% endif %}
