@@ -12,7 +12,7 @@ Install VMWare Workstation with its dependencies
 
 ``vmware-workstation.deps``
 --------------------
-Checks the file /usr/src/linux/.config for required kernel modules
+Check /usr/src/linux/.config for required kernel modules
 
 Documentation
 ======================
