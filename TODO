@@ -1,0 +1,6 @@
+TODO:
+ - make sure the modules are present in /etc/conf.d/modules (use augeas)
+   modules+="vmnet vmci vmmon"
+ - investigate if license key can be added programatically (maybe use grains to store the key)
+ - get rid of module.run from deps.sls and use augeas instead. if .config was changed, compile kernel and install it
+
